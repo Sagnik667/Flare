@@ -1,0 +1,88 @@
+/* Animations Keyframes */
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blink-red {
+  0%, 100% {
+    opacity: 1;
+    background-color: var(--color-sos);
+  }
+  50% {
+    opacity: 0.4;
+    background-color: transparent;
+  }
+}
+
+/* Helper Utilities */
+.animate-pulse-ring-1 {
+  animation: pulse-ring 3s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+}
+
+.animate-pulse-ring-2 {
+  animation: pulse-ring 3s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+  animation-delay: 1s;
+}
+
+.animate-pulse-ring-3 {
+  animation: pulse-ring 3s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+  animation-delay: 2s;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #161a23 25%, #252b3b 50%, #161a23 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-blink-red {
+  animation: blink-red 1.5s infinite ease-in-out;
+}

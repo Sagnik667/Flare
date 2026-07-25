@@ -1,0 +1,30 @@
+{
+  "name": "flare-backend",
+  "version": "1.0.0",
+  "description": "Flare Web App - Women's Emergency Response & Safety Backend",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
+    "pg": "^8.11.5",
+    "puppeteer-core": "^25.2.0",
+    "socket.io": "^4.7.5",
+    "uuid": "^9.0.1",
+    "winston": "^3.13.0"
+  }
+}

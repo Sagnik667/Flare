@@ -1,0 +1,24 @@
+:root {
+  /* Design Tokens */
+  --color-sos: #C0392B;
+  --color-sos-pulse: #E74C3C;
+  --color-sos-dark: #922B21;
+  --color-bg-base: #0D0F14;
+  --color-bg-surface: #161A23;
+  --color-bg-raised: #1E2433;
+  --color-bg-overlay: #252B3B;
+  --color-text-primary: #F0F2F5;
+  --color-text-secondary: #8A94A6;
+  --color-text-muted: #4A5568;
+  --color-accent: #7C5CBF;
+  --color-accent-light: #9B7DD4;
+  --color-accent-dark: #5E3EA8;
+  --color-success: #27AE60;
+  --color-warning: #F39C12;
+  --color-danger: #C0392B;
+  --color-info: #2980B9;
+  --color-border: #2A3140;
+  --color-border-focus: #7C5CBF;
+  
+  --shadow-sos: 0 0 40px rgba(192, 57, 43, 0.5);
+}
