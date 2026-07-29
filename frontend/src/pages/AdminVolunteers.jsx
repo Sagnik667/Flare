@@ -123,7 +123,11 @@ export const AdminVolunteers = () => {
                     </div>
                   ) : (
                     <a
-                      href={a.document_url.startsWith('http') ? a.document_url : `${import.meta.env.VITE_SOCKET_URL || ''}${a.document_url}`}
+                      href={
+                        a.document_url.startsWith('http')
+                          ? a.document_url
+                          : `${import.meta.env.VITE_SOCKET_URL || (import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '') : '')}${a.document_url}`
+                      }
                       target="_blank"
                       rel="noreferrer"
                       className="flex items-center justify-center gap-2 py-2 bg-bg-raised hover:bg-bg-overlay border border-border rounded-lg text-xs font-bold text-accent-light transition-all"
