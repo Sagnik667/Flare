@@ -5,25 +5,22 @@ dotenv.config();
 
 const { Pool } = pg;
 
-const getPoolConfig = () => {
-  const dbUrl = process.env.DATABASE_URL;
+const sslOption = { rejectUnauthorized: false };
+
+function getPoolConfig() {
+  let dbUrl = process.env.DATABASE_URL;
+
   if (dbUrl) {
-    try {
-      const parsed = new URL(dbUrl);
-      return {
-        host: parsed.hostname,
-        port: parseInt(parsed.port || '5432', 10),
-        database: parsed.pathname.slice(1),
-        user: parsed.username,
-        password: decodeURIComponent(parsed.password),
-        ssl: { rejectUnauthorized: false },
-      };
-    } catch (err) {
-      return {
-        connectionString: dbUrl,
-        ssl: { rejectUnauthorized: false },
-      };
+    // Ensure sslmode=require is present in the connection string for Neon & hosted Postgres
+    if (!dbUrl.includes('sslmode=')) {
+      dbUrl += (dbUrl.includes('?') ? '&' : '?') + 'sslmode=require';
+    } else if (dbUrl.includes('sslmode=verify-full')) {
+      dbUrl = dbUrl.replace('sslmode=verify-full', 'sslmode=require');
     }
+    return {
+      connectionString: dbUrl,
+      ssl: sslOption,
+    };
   }
 
   return {
@@ -33,10 +30,10 @@ const getPoolConfig = () => {
     user: process.env.DB_USER || 'flare_user',
     password: process.env.DB_PASSWORD,
     ssl: (process.env.DB_SSL || 'false') === 'true' || process.env.NODE_ENV === 'production'
-      ? { rejectUnauthorized: false }
+      ? sslOption
       : false,
   };
-};
+}
 
 const pool = new Pool({
   ...getPoolConfig(),
